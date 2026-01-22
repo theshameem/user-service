@@ -1,3 +1,4 @@
+using Application.Commands;
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
@@ -5,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 public class AuthController : ControllerBase
 {
     [HttpPost("/register")]
-    public IActionResult Register()
+    public IActionResult Register([FromBody] RegiserUserCommand request)
     {
         // Registration logic goes here
 
@@ -13,7 +14,7 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("/login")]
-    public IActionResult Login()
+    public IActionResult Login([FromBody] LoginUserCommand request)
     {
         // Login logic goes here
 
