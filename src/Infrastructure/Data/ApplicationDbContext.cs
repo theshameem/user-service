@@ -16,6 +16,7 @@ public class ApplicationDbContext: DbContext
 
         modelBuilder.Entity<User>(entity =>
         {
+            entity.ToTable("users");
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Email).IsRequired();
             entity.Property(e => e.PasswordHash).IsRequired();
