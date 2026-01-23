@@ -26,6 +26,7 @@ public class UserRepositoryService: IUserRepositoryService
             IsEmailEnabled = true,
             IsPushEnabled = true,
             IsSmsEnabled  = true,
+            FullName = $"{command.FirstName} {command.LastName}",
             Roles = new List<string> { "user" }
        };
 
