@@ -11,6 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Repositories
 builder.Services.AddScoped<IUserRepositoryService, UserRepositoryService>();
+builder.Services.AddScoped<IPasswordHasherService, PasswordHasherService>();
 
 // Controllers
 builder.Services.AddControllers();
