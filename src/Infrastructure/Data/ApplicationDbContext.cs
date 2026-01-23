@@ -24,7 +24,7 @@ public class ApplicationDbContext: DbContext
             entity.Property(e => e.IsEmailEnabled).HasDefaultValue(false);
             entity.Property(e => e.IsSmsEnabled).HasDefaultValue(false);
             entity.Property(e => e.IsPushEnabled).HasDefaultValue(false);
-            entity.Property(e => e.CreatedAt).HasDefaultValueSql("GETDATE()");
+            entity.Property(e => e.CreatedAt).HasDefaultValueSql("NOW()");
             entity.Property(e => e.IsActive).HasDefaultValue(true);
         });
     }
