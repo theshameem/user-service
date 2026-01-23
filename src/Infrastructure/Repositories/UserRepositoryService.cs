@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using Application.Commands;
 using Application.Interfaces;
 using Domain.Entities;
@@ -19,6 +20,10 @@ public class UserRepositoryService : IUserRepositoryService
 
     public async Task RegisterUser(RegiserUserCommand command)
     {
+        var IsEmailExits = await _context.Users.FirstOrDefaultAsync(x => x.Email == command.Email);
+
+        if(IsEmailExits != null) return;
+
         var hashedPassword = _passwordHasherService.HashPassword(command.Password);
 
         var user = new User
