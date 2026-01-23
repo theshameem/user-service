@@ -22,11 +22,12 @@ public class AuthController : ControllerBase
     }
 
     [HttpPost("/login")]
-    public IActionResult Login([FromBody] LoginUserCommand request)
+    public async Task<IActionResult> Login([FromBody] LoginUserCommand request)
     {
         // Login logic goes here
+        var result = await _userRepositoryService.LoginUser(request);
 
-        return Ok("User logged in successfully.");
+        return Ok(result ? "User logged in successfully." : "Wrong email or password.");
     }
 
     [HttpPost("/logout")]

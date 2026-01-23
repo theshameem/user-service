@@ -2,6 +2,7 @@ using Application.Commands;
 using Application.Interfaces;
 using Domain.Entities;
 using Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Repositories;
 
@@ -37,5 +38,21 @@ public class UserRepositoryService : IUserRepositoryService
         _context.Users.Add(user);
 
         await _context.SaveChangesAsync();
+    }
+
+    public async Task<bool> LoginUser(LoginUserCommand command)
+    {
+        var user = await _context.Users
+            .FirstOrDefaultAsync(x => x.Email == command.Email);
+
+        if (user == null)
+        {
+            return false;
+        }
+
+        var isValid = _passwordHasherService
+            .VerifyPassword(command.Password, user.PasswordHash);
+
+        return isValid;
     }
 }
