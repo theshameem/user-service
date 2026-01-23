@@ -1,3 +1,8 @@
+using Application.Commands;
+
 namespace Application.Interfaces;
 
-public interface IUserRepository { }
+public interface IUserRepositoryService
+{
+    Task RegisterUser(RegiserUserCommand command);
+}
