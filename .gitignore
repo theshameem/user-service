@@ -59,3 +59,21 @@ nunit-*.xml
 
 # Claude
 .claude
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Build results
+bin/
+obj/
+
+# Test
+TestResults/
+
+# Cache
+*.dbcache
+*.vsidx
